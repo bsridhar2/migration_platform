@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap');
+
+:root {
+  --bg-primary:   #0d1117;
+  --bg-secondary: #161b22;
+  --bg-tertiary:  #21262d;
+  --border:       #30363d;
+  --border-hover: #484f58;
+  --text-primary: #e6edf3;
+  --text-muted:   #8b949e;
+  --accent:       #58a6ff;
+  --green:        #3fb950;
+  --amber:        #d29922;
+  --red:          #f85149;
+  --purple:       #bc8cff;
+  --teal:         #39d353;
+}
+
+@layer base {
+  * { box-sizing: border-box; }
+  
+  html { scroll-behavior: smooth; }
+  
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    min-height: 100vh;
+  }
+  
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #30363d; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #484f58; }
+}
+
+@layer components {
+  /* Card surface */
+  .card {
+    @apply bg-[#161b22] border border-[#30363d] rounded-xl;
+  }
+
+  /* Code / mono text */
+  .code {
+    @apply font-mono text-sm bg-[#21262d] border border-[#30363d] rounded px-1.5 py-0.5;
+  }
+
+  /* Mermaid diagram container */
+  .mermaid-container svg {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Approval gate pulse ring */
+  .gate-pulse {
+    @apply animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-20;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  .animate-slide-up {
+    animation: slideUp 0.4s ease-out;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(16px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
